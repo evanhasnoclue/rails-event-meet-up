@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  time: MyString
+  place: MyString
+  capacity: 1
+  photo: MyString
+  deadline: MyString
+  overdue: false
+  full: false
+  user: one
+
+two:
+  title: MyString
+  description: MyString
+  time: MyString
+  place: MyString
+  capacity: 1
+  photo: MyString
+  deadline: MyString
+  overdue: false
+  full: false
+  user: two
