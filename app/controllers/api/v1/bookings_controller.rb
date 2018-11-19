@@ -1,4 +1,4 @@
-class Api::V1::BookingsController < ActionController::Base
+class Api::V1::BookingsController < Api::V1::BaseController
   def create
     @event =Event.find(params[:event_id])
     @user =User.find(params[:user_id])
