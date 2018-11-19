@@ -7,5 +7,4 @@ class Event < ApplicationRecord
   validates :place, presence: true
   validates :capacity, presence: true
   validates :deadline, presence: true
-
 end
