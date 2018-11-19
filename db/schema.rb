@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2018_11_19_072658) do
 
   # These are extensions that must be enabled in order to support this database
@@ -27,14 +26,12 @@ ActiveRecord::Schema.define(version: 2018_11_19_072658) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
-    t.string "description"
-    t.string "time"
+    t.text "description"
+    t.date "time"
     t.string "place"
     t.integer "capacity"
     t.string "photo"
-    t.string "deadline"
-    t.boolean "overdue"
-    t.boolean "full"
+    t.date "deadline"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
