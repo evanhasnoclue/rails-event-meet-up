@@ -1,6 +1,6 @@
 class Api::V1::UsersController < Api::V1::BaseController
 
-  # before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :update]
 
   def create
     @user = User.new(user_params)
@@ -11,10 +11,34 @@ class Api::V1::UsersController < Api::V1::BaseController
     end
   end
 
+  def show
+    # @events_own = Event.where("user_id": @user.id)
+    # @bookings = Booking.where("user_id": @user.id)
+    # @bookings = []
+    # @bookings.each do |i|
+    #    @bookings << Event.find(i.event_id)
+    # end
+    # @reviews = Review.where("booking_id": @booking.id)
+  end
+
+  def update
+    if @user.update(user_params)
+      # redirect_to restaurant_path(@restaurant)
+      render :show
+    else
+      rende_error
+    end
+  end
+
+
   private
 
   def user_params
     params.require(:user).permit(:name, :wechat_id, :phone)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end
