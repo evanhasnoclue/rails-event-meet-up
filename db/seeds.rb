@@ -9,10 +9,10 @@
 
 User.destroy_all
 
-User.create(name: "A", phone: "18810651234")
-User.create(name: "B", phone: "18810651222")
-User.create(name: "C", phone: "18810651209")
-User.create(name: "D", phone: "18810651265")
+User.create(name: "A")
+User.create(name: "B")
+User.create(name: "C")
+User.create(name: "D")
 
 Event.destroy_all
 Event.create(user_id: 1, title: "test1")
