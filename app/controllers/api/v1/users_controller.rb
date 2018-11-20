@@ -16,12 +16,12 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_data)
     if @user.save
-    render json: @user.to_json
-      else
-        render_error
-      end
+      render json: @user.to_json
+    else
+      render_error
+    end
     # if @user.save
     #   redirect_to user_path(@user), status: :created
     # else
@@ -59,6 +59,10 @@ class Api::V1::UsersController < Api::V1::BaseController
 
 
   private
+
+  def user_data
+    params.require(:user_data).permit(:name, :wechat_id, :gender, :city, :province, :country, :avatar)
+  end
 
   def user_params
     params.require(:user).permit(:name, :wechat_id, :gender, :city, :province, :country, :avatar)
