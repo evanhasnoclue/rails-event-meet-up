@@ -12,7 +12,7 @@ class Api::V1::EventsController < Api::V1::BaseController
     @event = Event.new(event_params)
     @event.user = @user
     if @event.save
-      render :show, status: :created
+      render json: @event.to_json
     else
       render_error
     end
@@ -21,7 +21,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
-      render :show, status: :created
+      render json: @event.to_json
     else
       render_error
     end
@@ -36,7 +36,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :time, :place, :deadline, :capacity, :photo)
+    params.require(:event).permit(:title, :description, :time, :place, :deadline, :capacity, :photo, :user_id)
   end
 
   def render_error
