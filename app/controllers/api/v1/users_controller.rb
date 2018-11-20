@@ -14,7 +14,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   @wechat_response ||= RestClient.post(URL, wechat_params)
   @wechat_user ||= JSON.parse(@wechat_response.body)
   end
-  
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -61,7 +61,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:name, :wechat_id, :phone)
+    params.require(:user).permit(:name, :wechat_id, :gender, :city, :province, :country, :avatar)
   end
 
   def set_user

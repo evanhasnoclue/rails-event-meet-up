@@ -1,5 +1,5 @@
 
-json.extract! @user, :id, :name, :wechat_id, :phone
+json.extract! @user, :id, :name, :wechat_id, :gender, :city, :province, :country, :avatar
 json.events @user.events do |event|
   json.extract! event, :id, :title, :description, :time, :place, :capacity, :photo, :deadline
   json.date event.created_at.strftime("%m/%d/%y")

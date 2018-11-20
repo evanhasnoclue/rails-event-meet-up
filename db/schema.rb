@@ -51,7 +51,11 @@ ActiveRecord::Schema.define(version: 2018_11_19_072658) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "wechat_id"
-    t.string "phone"
+    t.string "gender"
+    t.string "city"
+    t.string "province"
+    t.string "country"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
