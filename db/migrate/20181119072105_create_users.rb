@@ -3,7 +3,12 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.string :name
       t.string :wechat_id
-      t.string :phone
+      t.string :gender
+      t.string :city
+      t.string :province
+      t.string :country
+      t.string :avatar
+
 
       t.timestamps
     end
