@@ -1,5 +1,5 @@
 class Api::V1::UsersController < Api::V1::BaseController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   URL = "https://api.weixin.qq.com/sns/jscode2session".freeze
   before_action :set_user, only: [:show, :update]
 
@@ -13,6 +13,20 @@ class Api::V1::UsersController < Api::V1::BaseController
   def wechat_user
   @wechat_response ||= RestClient.post(URL, wechat_params)
   @wechat_user ||= JSON.parse(@wechat_response.body)
+  end
+  
+  def create
+    @user = User.new(user_params)
+    if @user.save
+    render json: @user.to_json
+      else
+        render_error
+      end
+    # if @user.save
+    #   redirect_to user_path(@user), status: :created
+    # else
+    #   render :new
+    # end
   end
 
   # def create
@@ -37,7 +51,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   def update
     if @user.update(user_params)
       # redirect_to restaurant_path(@restaurant)
-      render :show
+      render json: @user.to_json
     else
       render_error
     end
