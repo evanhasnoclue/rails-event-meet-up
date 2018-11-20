@@ -5,14 +5,9 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def login
     @user = User.find_or_create_by(wechat_id: wechat_user.fetch("openid"))
-    if @user.save
-      render json: {
-        userId: @user.wechat_id,
-        status: "created"
-      }
-    else
-      render_error
-    end
+    render json: {
+      userId: @user.wechat_id
+    }
   end
 
   def wechat_user
