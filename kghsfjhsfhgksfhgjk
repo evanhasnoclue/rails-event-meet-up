@@ -1,0 +1,23 @@
+[1mdiff --git a/app/controllers/api/v1/users_controller.rb b/app/controllers/api/v1/users_controller.rb[m
+[1mindex 4f7b93d..a0d1b77 100644[m
+[1m--- a/app/controllers/api/v1/users_controller.rb[m
+[1m+++ b/app/controllers/api/v1/users_controller.rb[m
+[36m@@ -14,14 +14,14 @@[m [mclass Api::V1::UsersController < Api::V1::BaseController[m
+   @wechat_response ||= RestClient.post(URL, wechat_params)[m
+   @wechat_user ||= JSON.parse(@wechat_response.body)[m
+   end[m
+[31m-  [m
+[32m+[m
+   def create[m
+     @user = User.new(user_params)[m
+     if @user.save[m
+     render json: @user.to_json[m
+[31m-      else[m
+[31m-        render_error[m
+[31m-      end[m
+[32m+[m[32m    else[m
+[32m+[m[32m      render_error[m
+[32m+[m[32m    end[m
+     # if @user.save[m
+     #   redirect_to user_path(@user), status: :created[m
+     # else[m

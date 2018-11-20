@@ -14,14 +14,14 @@ class Api::V1::UsersController < Api::V1::BaseController
   @wechat_response ||= RestClient.post(URL, wechat_params)
   @wechat_user ||= JSON.parse(@wechat_response.body)
   end
-  
+
   def create
     @user = User.new(user_params)
     if @user.save
     render json: @user.to_json
-      else
-        render_error
-      end
+    else
+      render_error
+    end
     # if @user.save
     #   redirect_to user_path(@user), status: :created
     # else
