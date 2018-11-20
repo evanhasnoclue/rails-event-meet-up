@@ -8,9 +8,9 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def create
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
     @event = Event.new(event_params)
-    @event.user = @user
+    # @event.user = @user
     if @event.save
       render json: @event.to_json
     else
