@@ -5,7 +5,8 @@ class Api::V1::ReviewsController < Api::V1::BaseController
     @review.booking = @booking
 
     if @review.save
-      redirect_to user_path(@review.user), status: :created
+      # redirect_to user_path(@review.user), status: :created
+      render json: @review.to_json
     else
       render_error
     end
