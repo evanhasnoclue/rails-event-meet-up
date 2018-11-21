@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :description
       t.date :time
-      t.string :place
+      t.string :address
       t.integer :capacity
       t.string :photo
       t.date :deadline

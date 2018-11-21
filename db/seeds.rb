@@ -9,10 +9,10 @@
 
 User.destroy_all
 
-User.create(name: "A")
-User.create(name: "B")
-User.create(name: "C")
-User.create(name: "D")
+User.create(name: "A", wechat_id: "1")
+User.create(name: "B", wechat_id: "2")
+User.create(name: "C", wechat_id: "3")
+User.create(name: "D", wechat_id: "4")
 
 Event.destroy_all
 Event.create(user_id: 1, title: "test1")
