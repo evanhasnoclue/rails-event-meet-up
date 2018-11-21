@@ -1,4 +1,7 @@
 class Api::V1::EventsController < Api::V1::BaseController
+  # geocoded_by :address
+  # after_validation :geocode, if: :will_save_change_to_address?
+
   def index
     @events = Event.all
   end
@@ -36,7 +39,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :time, :place, :deadline, :capacity, :photo, :user_id)
+    params.require(:event).permit(:title, :description, :time, :address, :latitude, :longitude, :deadline, :capacity, :photo, :user_id)
   end
 
   def render_error

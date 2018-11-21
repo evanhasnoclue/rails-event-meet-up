@@ -1,11 +1,11 @@
 
 json.extract! @user, :id, :name, :wechat_id, :gender, :city, :province, :country, :avatar
 json.events @user.events do |event|
-  json.extract! event, :id, :title, :description, :time, :place, :capacity, :photo, :deadline
+  json.extract! event, :id, :title, :description, :time, :address, :latitude, :longitude, :capacity, :photo, :deadline
   json.date event.created_at.strftime("%m/%d/%y")
 end
 json.bookings @user.bookings do |booking|
-  json.extract! booking.event, :id, :title, :description, :time, :place, :capacity, :photo, :deadline
+  json.extract! booking.event, :id, :title, :description, :time, :address, :latitude, :longitude, :capacity, :photo, :deadline
   json.date booking.event.created_at.strftime("%m/%d/%y")
 end
 # json.events @user.events do |event|
