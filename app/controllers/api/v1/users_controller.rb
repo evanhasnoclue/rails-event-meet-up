@@ -16,11 +16,15 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def create
-    @user = User.new(user_data)
-    if @user.save
+    if @user = User.find_by(wechat_id: user_data[:wechat_id])
       render json: @user.to_json
     else
-      render_error
+      @user = User.new(user_data)
+      if @user.save
+        render json: @user.to_json
+      else
+        render_error
+      end
     end
     # if @user.save
     #   redirect_to user_path(@user), status: :created
