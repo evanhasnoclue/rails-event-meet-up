@@ -1,6 +1,6 @@
 class Api::V1::EventsController < Api::V1::BaseController
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
+  # geocoded_by :address
+  # after_validation :geocode, if: :will_save_change_to_address?
 
   def index
     @events = Event.all
