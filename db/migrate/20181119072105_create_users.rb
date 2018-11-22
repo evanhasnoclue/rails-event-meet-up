@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :province
       t.string :country
       t.string :avatar
+      t.string :phone
 
 
       t.timestamps

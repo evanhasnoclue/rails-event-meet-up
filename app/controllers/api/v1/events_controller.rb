@@ -1,6 +1,14 @@
 class Api::V1::EventsController < Api::V1::BaseController
 
 
+  def tagged
+    if params[:tag].present?
+      @events = Event.tagged_with(params[:tag])
+    else
+      @events = Event.all
+    end
+  end
+
   def index
     @events = Event.all
   end
@@ -14,6 +22,10 @@ class Api::V1::EventsController < Api::V1::BaseController
     @event = Event.new(event_params)
     # @event.user = @user
     if @event.save
+      params[:tag].each do |tag|
+        @event.tag_list.add(tag)
+        @event.save
+      end
       render json: @event.to_json
     else
       render_error
@@ -38,7 +50,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :time, :address, :latitude, :longitude, :deadline, :capacity, :photo, :user_id)
+    params.require(:event).permit(:title, :description, :time, :address, :latitude, :longitude, :deadline, :capacity, :photo, :user_id, tag_list: [])
   end
 
   def render_error
