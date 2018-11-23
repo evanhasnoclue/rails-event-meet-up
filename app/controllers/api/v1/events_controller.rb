@@ -22,9 +22,11 @@ class Api::V1::EventsController < Api::V1::BaseController
     @event = Event.new(event_params)
     # @event.user = @user
     if @event.save
-      params[:tag].each do |tag|
+      if params[:tag]
+        params[:tag].each do |tag|
         @event.tag_list.add(tag)
         @event.save
+        end
       end
       render json: @event.to_json
     else
